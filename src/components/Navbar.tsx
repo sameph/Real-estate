@@ -6,9 +6,13 @@ import { Button } from './ui/button';
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
+  { name: 'Highlights', href: '#highlights' },
   { name: 'Amenities', href: '#amenities' },
+  { name: 'Floor Plans', href: '#floor-plans' },
   { name: 'Gallery', href: '#gallery' },
+  { name: 'Testimonials', href: '#testimonials' },
   { name: 'Location', href: '#location' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 const Navbar = () => {

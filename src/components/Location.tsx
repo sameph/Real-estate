@@ -218,41 +218,28 @@ const Location = () => {
             className="lg:col-span-2 relative"
           >
             {!mapToken ? (
-              <motion.div 
-                className="aspect-[16/10] rounded-2xl bg-card border border-border overflow-hidden flex flex-col items-center justify-center p-8"
-                whileHover={{ borderColor: 'hsl(var(--primary) / 0.3)' }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.1, 1],
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <MapPin className="w-16 h-16 text-primary/50 mb-4" />
-                </motion.div>
-                <p className="text-muted-foreground text-center mb-4">
-                  Enter your Mapbox public token to view the interactive map
-                </p>
-                <input
-                  type="text"
-                  placeholder="pk.your_mapbox_token..."
-                  className="w-full max-w-md px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all duration-300"
-                  onChange={(e) => setMapToken(e.target.value)}
-                />
-                <p className="text-xs text-muted-foreground mt-3">
-                  Get your token at{' '}
-                  <a
-                    href="https://mapbox.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    mapbox.com
-                  </a>
-                </p>
-              </motion.div>
+              <div className="rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-colors duration-500">
+                <div className="aspect-[16/10] w-full">
+                  <iframe
+                    title="Balhir Location Map (Demo)"
+                    className="w-full h-full"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={`https://www.openstreetmap.org/export/embed.html?bbox=${38.7887}%2C${8.9954}%2C${38.8087}%2C${9.0154}&layer=mapnik&marker=${9.0054}%2C${38.7987}`}
+                  />
+                </div>
+                <div className="px-4 py-3 bg-card/60 border-t border-border flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+                  <p className="text-xs text-muted-foreground">
+                    Showing demo map. Enter a Mapbox token to enable the interactive 3D map.
+                  </p>
+                  <input
+                    type="text"
+                    placeholder="pk.your_mapbox_token..."
+                    className="w-full sm:w-auto sm:min-w-[320px] px-3 py-2 rounded-md bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/40 transition-all duration-300"
+                    onChange={(e) => setMapToken(e.target.value)}
+                  />
+                </div>
+              </div>
             ) : (
               <div
                 ref={mapContainerRef}
